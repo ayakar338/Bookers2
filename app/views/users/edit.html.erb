@@ -1,0 +1,18 @@
+<% if @user.errors.any?%>
+ <%=@user.errors.count%>
+ <%@user.errors.full_messages.each do|message|%>error
+ <%=message%>
+ <%end%>
+<%end%>
+<h1>User info</h1>
+<%= form_with model:@user,url: user_path, local:true do |f| %>
+<p>name</p>
+<%= f.text_field :name %>
+<p>Image</p>
+<%= f.attachment_field:profile_image %>
+<p>introduction</p>
+<%= f.text_area :introduction %>
+<%=f.submit "Update User"%>
+<%end%>
+<%=render "homes/list"%>
+
