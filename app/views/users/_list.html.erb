@@ -1,8 +1,17 @@
-<div class="profile-container">
 <h1>User info</h1>
-<%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-<h3 class="profile-name">name<%=current_user.name%></h3>
-<h3 class="profile-introduction">introduction<%=current_user.introduction%></h3>
-
-<p><%=link_to "編集",edit_user_path(current_user.id)%></p>
-
+  <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+<table class="table">
+ <tbody>
+  <tr>
+      <th>name</th>
+      <th><%=user.name%></th>
+  </tr>
+  <tr>
+      <th>introduction</th>
+      <th><%=user.introduction%></th>
+  </tr>
+ </tbody>
+</table>
+<%=link_to edit_user_path(user.id) do %>
+ <p class="btn btn-outline-secondary btn-block fas fa-user-cog"></p>
+<%end%>
